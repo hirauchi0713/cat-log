@@ -1,4 +1,4 @@
-const logger = require('./cat-log')('test')
+const logger = require('./categorized-log')('test')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
 logger.fatal('fatal msg', arr)
