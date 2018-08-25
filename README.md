@@ -10,7 +10,7 @@ yarn add categorized-log
 
 ## Usage
 test.js
-```
+```js
 const cl = require('categorized-log')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
