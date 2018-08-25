@@ -27,6 +27,9 @@ doAll(cl())
 doAll(cl('test'))
 doAll(cl('model/DB'))
 doAll(cl('model/Mail'))
+doAll(cl('csev1'))
+doAll(cl('csev2'))
+doAll(cl('csev3'))
 ```
 
 command line
