@@ -1,4 +1,6 @@
-# Usage
+# Categorized colorful console logger
+
+## Usage
 test.js
 ```
 const logger = require('cat-log')('test')
