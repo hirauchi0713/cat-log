@@ -3,6 +3,7 @@ const chalk = require('chalk')
 
 const LOGGER_LEVEL_PREFIX = 'LOGGER_LEVEL_'
 const DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
+const DEFAULT_CATEGORY = 'default'
 const DEFAULT_LEVEL = 'info'
 
 const LEVELS = [
@@ -27,32 +28,25 @@ const COLORS = [
 
 function createLogger(category) {
 
+  const thisCategory = category || DEFAULT_CATEGORY
+  const thisLevel = process.env[LOGGER_LEVEL_PREFIX+thisCategory] || DEFAULT_LEVEL
+
   return LEVELS.reduce((a,c)=>{
 
-    function level2i(level) { return LEVELS.indexOf(level) }
-
-    function categoryLevel() {
-      if (! category) { return DEFAULT_LEVEL }
-      return process.env[LOGGER_LEVEL_PREFIX+category] || DEFAULT_LEVEL
-    }
-
-    if (level2i(c) > level2i(categoryLevel())) {
-
+    if (LEVELS.indexOf(c) > LEVELS.indexOf(thisLevel)) {
       a[c] = function() {} // nop
-
-    } else {
-
-      const coloring = COLORS[level2i(c)]
-      const label = c.toUpperCase()
-      a[c] = function() {
-        const args = Array.prototype.slice.call(arguments)
-        const head = coloring(`[${moment().format(DATE_FORMAT)}][${category}][${label}]`)
-        args.unshift(head)
-        console.log.apply(null, args)
-      }
-
+      return a
     }
 
+    const coloring = COLORS[LEVELS.indexOf(c)]
+    const label = c.toUpperCase()
+
+    a[c] = function() {
+      const args = Array.prototype.slice.call(arguments)
+      const head = coloring(`[${moment().format(DATE_FORMAT)}][${thisCategory}][${label}]`)
+      args.unshift(head)
+      console.log.apply(null, args)
+    }
     return a
   }, {})
 

@@ -1,6 +1,6 @@
 {
   "name": "categorized-log",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A categorized colorful console logger.",
   "main": "categorized-log.js",
   "repository": "https://github.com/hirauchi0713/categorized-log",
