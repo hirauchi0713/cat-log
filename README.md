@@ -13,8 +13,8 @@ const cl = require('categorized-log')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
 
-const testLogger = cl('test')
 console.log('---testLogger---')
+const testLogger = cl('test')
 testLogger.fatal('fatal msg', arr)
 testLogger.error('error msg', arr)
 testLogger.warn ('warn msg' , arr)
