@@ -12,10 +12,13 @@ function doAll(logger) {
   logger.trace('trace msg', arr)
 }
 
+const testLogger = gl('test')
+
 doAll(gl())
-doAll(gl('test'))
+doAll(testLogger)
 doAll(gl('model/DB'))
 doAll(gl('model/Mail'))
 doAll(gl('csev1'))
 doAll(gl('csev2'))
 doAll(gl('csev3'))
+doAll(testLogger)

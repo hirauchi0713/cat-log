@@ -38,15 +38,16 @@ const CATEGORIES = LEVELS.reduce((a,c)=>{
 
 function createLogger(category) {
 
-  this.category = category || DEFAULT_CATEGORY
-  this.level = CATEGORIES[
+  const logger = {}
+  logger.category = category || DEFAULT_CATEGORY
+  logger.level = CATEGORIES[
     Object.keys(CATEGORIES)
       .reverse()
-      .find(key=>this.category.match(key))] || DEFAULT_LEVEL
+      .find(key=>logger.category.match(key))] || DEFAULT_LEVEL
 
-  const loggers = LEVELS.reduce((a,c)=>{
+  const funcs = LEVELS.reduce((a,c)=>{
 
-    if (LEVELS.indexOf(c) > LEVELS.indexOf(this.level)) {
+    if (LEVELS.indexOf(c) > LEVELS.indexOf(logger.level)) {
       a[c] = function() {} // nop
       return a
     }
@@ -56,15 +57,15 @@ function createLogger(category) {
 
     a[c] = function() {
       const args = Array.prototype.slice.call(arguments)
-      const head = coloring(`[${moment().format(DATE_FORMAT)}][${this.category}][${label}]`)
+      const head = coloring(`[${moment().format(DATE_FORMAT)}][${logger.category}][${label}]`)
       args.unshift(head)
       console.log.apply(null, args)
     }
     return a
   }, {})
 
-  Object.assign(this, loggers)
-  return this
+  Object.assign(logger, funcs)
+  return logger
 }
 
 module.exports = createLogger
