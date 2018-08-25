@@ -3,7 +3,7 @@ A simple regex-categorized colorful console logger.
 
 ## INSTALL
 ```
-npm install --save categorized-log
+yarn add categorized-log
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ doAll(cl('csev3'))
 
 command line
 ```
-$ LOGLEVEL_TRACE='test' LOGLEVEL_ERROR='model/.*' LOGLEVEL_FATAL='csev1,csev2,csev3' node test.js
+$ yarn test
 ```
 
 ![output](https://raw.githubusercontent.com/hirauchi0713/categorized-log/readme-images/output.png)
