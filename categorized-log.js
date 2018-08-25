@@ -1,7 +1,7 @@
 const moment = require('moment')
 const chalk = require('chalk')
 
-const LOGGER_LEVEL_PREFIX = 'LOGGER_LEVEL_'
+const LOGGER_LEVEL_PREFIX = 'LOGLEVEL_'
 const DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 const DEFAULT_CATEGORY = 'default'
 const DEFAULT_LEVEL = 'info'
@@ -26,14 +26,26 @@ const COLORS = [
   chalk.gray,
 ]
 
+// { regexp: level ... } dictionaly
+const CATEGORIES = LEVELS.reduce((a,c)=>{
+  const env = process.env[LOGGER_LEVEL_PREFIX+c.toUpperCase()]
+  if (! env) {
+    return a
+  }
+  env.split(',').forEach(e=>a[`^${e.trim()}$`] = c)
+  return a
+}, {})
+
 function createLogger(category) {
 
-  const thisCategory = category || DEFAULT_CATEGORY
-  const thisLevel = process.env[LOGGER_LEVEL_PREFIX+thisCategory] || DEFAULT_LEVEL
+  this.category = category || DEFAULT_CATEGORY
+  this.level = CATEGORIES[
+    Object.keys(CATEGORIES)
+      .find(key=>this.category.match(key))] || DEFAULT_LEVEL
 
-  return LEVELS.reduce((a,c)=>{
+  const loggers = LEVELS.reduce((a,c)=>{
 
-    if (LEVELS.indexOf(c) > LEVELS.indexOf(thisLevel)) {
+    if (LEVELS.indexOf(c) > LEVELS.indexOf(this.level)) {
       a[c] = function() {} // nop
       return a
     }
@@ -43,13 +55,15 @@ function createLogger(category) {
 
     a[c] = function() {
       const args = Array.prototype.slice.call(arguments)
-      const head = coloring(`[${moment().format(DATE_FORMAT)}][${thisCategory}][${label}]`)
+      const head = coloring(`[${moment().format(DATE_FORMAT)}][${this.category}][${label}]`)
       args.unshift(head)
       console.log.apply(null, args)
     }
     return a
   }, {})
 
+  Object.assign(this, loggers)
+  return this
 }
 
 module.exports = createLogger

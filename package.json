@@ -1,12 +1,12 @@
 {
   "name": "categorized-log",
-  "version": "1.1.0",
-  "description": "A categorized colorful console logger.",
+  "version": "1.2.0",
+  "description": "A simple regex-categorized colorful console logger.",
   "main": "categorized-log.js",
   "repository": "https://github.com/hirauchi0713/categorized-log",
   "author": "Hideyuki Hirauchi<hideyuki@hirauchi.com>",
   "license": "MIT",
-  "keywords": [ "categorized", "colorful", "console", "logger", "logging" ],
+  "keywords": [ "simple", "regex", "categorized", "colorful", "console", "logger" ],
   "dependencies": {
     "chalk": "^2.4.1",
     "moment": "^2.22.2"

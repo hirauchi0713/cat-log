@@ -1,5 +1,5 @@
 # categorized-log
-A categorized colorful console logger.
+A simple regex-categorized colorful console logger.
 
 ## INSTALL
 ```
@@ -13,28 +13,25 @@ const cl = require('categorized-log')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
 
-console.log('---testLogger---')
-const testLogger = cl('test')
-testLogger.fatal('fatal msg', arr)
-testLogger.error('error msg', arr)
-testLogger.warn ('warn msg' , arr)
-testLogger.info ('info msg' , arr)
-testLogger.debug('debug msg', arr)
-testLogger.trace('trace msg', arr)
+function doAll(logger) {
+  console.log(logger.category, logger.level)
+  logger.fatal('fatal msg', arr)
+  logger.error('error msg', arr)
+  logger.warn ('warn msg' , arr)
+  logger.info ('info msg' , arr)
+  logger.debug('debug msg', arr)
+  logger.trace('trace msg', arr)
+}
 
-console.log('---defaultLogger---')
-const defaultLogger = cl()
-defaultLogger.fatal('fatal msg', arr)
-defaultLogger.error('error msg', arr)
-defaultLogger.warn ('warn msg' , arr)
-defaultLogger.info ('info msg' , arr)
-defaultLogger.debug('debug msg', arr)
-defaultLogger.trace('trace msg', arr)
+doAll(cl())
+doAll(cl('test'))
+doAll(cl('model/DB'))
+doAll(cl('model/Mail'))
 ```
 
 command line
 ```
-$ LOGGER_LEVEL_test=trace node test.js
+$ LOGLEVEL_TRACE="test" LOGLEVEL_ERROR='model/.*' node test.js
 ```
 
 ![output](https://raw.githubusercontent.com/hirauchi0713/categorized-log/readme-images/output.png)
