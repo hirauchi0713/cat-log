@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Categorized colorful console logger.",
   "main": "cat-log.js",
-  "repository": "https://github.com/hirauchi0713/",
+  "repository": "https://github.com/hirauchi0713/cat-log",
   "author": "Hideyuki Hirauchi<hideyuki@hirauchi.com>",
   "license": "MIT",
   "dependencies": {
