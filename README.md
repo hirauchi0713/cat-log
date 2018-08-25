@@ -12,7 +12,7 @@ yarn add gorilog
 ## Usage
 test.js
 ```js
-const cl = require('gorilog')
+const gl = require('gorilog')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
 
@@ -26,13 +26,13 @@ function doAll(logger) {
   logger.trace('trace msg', arr)
 }
 
-doAll(cl())
-doAll(cl('test'))
-doAll(cl('model/DB'))
-doAll(cl('model/Mail'))
-doAll(cl('csev1'))
-doAll(cl('csev2'))
-doAll(cl('csev3'))
+doAll(gl())
+doAll(gl('test'))
+doAll(gl('model/DB'))
+doAll(gl('model/Mail'))
+doAll(gl('csev1'))
+doAll(gl('csev2'))
+doAll(gl('csev3'))
 ```
 
 ```
