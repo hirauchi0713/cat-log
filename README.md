@@ -1,4 +1,5 @@
 [![Version npm](https://img.shields.io/npm/v/gorilog.svg?style=flat-square)](https://www.npmjs.com/package/gorilog)
+[![MIT License][license-image]][license-url]
 
 # 🦍 gorilog
 A simple regex-categorized colorful console logger.
@@ -48,4 +49,7 @@ $ yarn test2
 Hideyuki Hirauchi
 
 ## LICENSE
-MIT
+gorilog is freely distributable under the terms of the MIT license.
+
+[license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
+[license-url]: LICENSE
