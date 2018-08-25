@@ -49,7 +49,7 @@ $ yarn test2
 Hideyuki Hirauchi
 
 ## LICENSE
-gorilog is freely distributable under the terms of the MIT license.
+gorilog is freely distributable under the terms of the [MIT license][license-url].
 
 [license-image]: http://img.shields.io/badge/license-MIT-blue.svg?style=flat
 [license-url]: LICENSE
