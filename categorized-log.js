@@ -2,7 +2,7 @@ const moment = require('moment')
 const chalk = require('chalk')
 
 const LOGGER_LEVEL_PREFIX = 'LOGGER_LEVEL_'
-
+const DATE_FORMAT = 'YYYY-MM-DD HH:mm:ss'
 const DEFAULT_LEVEL = 'info'
 
 const LEVELS = [
@@ -46,8 +46,7 @@ function createLogger(category) {
       const label = c.toUpperCase()
       a[c] = function() {
         const args = Array.prototype.slice.call(arguments)
-        const m = moment()
-        const head = coloring(`[${m.format('YYYY-MM-DD HH:mm:ss')}][${category}][${label}]`)
+        const head = coloring(`[${moment().format(DATE_FORMAT)}][${category}][${label}]`)
         args.unshift(head)
         console.log.apply(null, args)
       }
