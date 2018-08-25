@@ -34,7 +34,7 @@ doAll(cl('csev3'))
 
 command line
 ```
-$ LOGLEVEL_TRACE="test" LOGLEVEL_ERROR='model/.*' node test.js
+$ LOGLEVEL_TRACE='test' LOGLEVEL_ERROR='model/.*' LOGLEVEL_FATAL='csev1,csev2,csev3' node test.js
 ```
 
 ![output](https://raw.githubusercontent.com/hirauchi0713/categorized-log/readme-images/output.png)
