@@ -1,4 +1,10 @@
-# Categorized colorful console logger
+# cat-log
+A categorized colorful console logger.
+
+## INSTALL
+```
+npm install --save cat-log
+```
 
 ## Usage
 test.js
@@ -20,3 +26,6 @@ $ LOGGER_LEVEL_test=trace node test.js
 ```
 
 ![output](https://raw.githubusercontent.com/hirauchi0713/cat-log/readme-images/output.png)
+
+## LICENSE
+MIT
