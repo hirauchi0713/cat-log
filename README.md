@@ -1,3 +1,5 @@
+[![Version npm](https://img.shields.io/npm/v/categorized-log.svg?style=flat-square)](https://www.npmjs.com/package/categorized-log)
+
 # categorized-log
 A simple regex-categorized colorful console logger.
 
