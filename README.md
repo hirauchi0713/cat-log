@@ -27,5 +27,8 @@ $ LOGGER_LEVEL_test=trace node test.js
 
 ![output](https://raw.githubusercontent.com/hirauchi0713/cat-log/readme-images/output.png)
 
+## AUTHOR
+Hideyuki Hirauchi<hideyuki@hirauchi.com>
+
 ## LICENSE
 MIT
