@@ -32,12 +32,15 @@ doAll(cl('csev2'))
 doAll(cl('csev3'))
 ```
 
-command line
 ```
 $ yarn test
 ```
-
 ![output](https://raw.githubusercontent.com/hirauchi0713/categorized-log/readme-images/output.png)
+
+```
+$ yarn test2
+```
+![output](https://raw.githubusercontent.com/hirauchi0713/categorized-log/readme-images/output2.png)
 
 ## AUTHOR
 Hideyuki Hirauchi

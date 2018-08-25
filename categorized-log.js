@@ -41,6 +41,7 @@ function createLogger(category) {
   this.category = category || DEFAULT_CATEGORY
   this.level = CATEGORIES[
     Object.keys(CATEGORIES)
+      .reverse()
       .find(key=>this.category.match(key))] || DEFAULT_LEVEL
 
   const loggers = LEVELS.reduce((a,c)=>{

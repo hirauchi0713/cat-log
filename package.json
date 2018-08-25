@@ -8,7 +8,8 @@
   "license": "MIT",
   "keywords": [ "simple", "regex", "categorized", "colorful", "console", "logger" ],
   "scripts": {
-    "test": "LOGLEVEL_TRACE='test' LOGLEVEL_ERROR='model/.*' LOGLEVEL_NONE='csev1,csev2,csev3' node test.js"
+    "test": "LOGLEVEL_TRACE='test' LOGLEVEL_ERROR='model/.*' LOGLEVEL_NONE='csev1,csev2,csev3' node test.js",
+    "test2": "LOGLEVEL_NONE='.*' LOGLEVEL_TRACE=test node test.js"
   },
   "dependencies": {
     "chalk": "^2.4.1",
