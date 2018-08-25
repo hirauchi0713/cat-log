@@ -1,4 +1,4 @@
-const cl = require('./categorized-log')
+const cl = require('./gorilog')
 const obj = { foo: 'foo', bar: 'bar' }
 const arr = [ 0, 1, 2, 3, obj ]
 

@@ -1,9 +1,9 @@
 {
-  "name": "categorized-log",
-  "version": "1.3.1",
+  "name": "gorilog",
+  "version": "2.0.0",
   "description": "A simple regex-categorized colorful console logger.",
-  "main": "categorized-log.js",
-  "repository": "https://github.com/hirauchi0713/categorized-log",
+  "main": "gorilog.js",
+  "repository": "https://github.com/hirauchi0713/gorilog",
   "author": "Hideyuki Hirauchi<hideyuki@hirauchi.com>",
   "license": "MIT",
   "keywords": [ "simple", "regex", "categorized", "colorful", "console", "logger" ],
