@@ -1,58 +1,59 @@
 const moment = require('moment')
 const chalk = require('chalk')
 
+const LOGGER_LEVEL_PREFIX = 'LOGGER_LEVEL_'
+
+const DEFAULT_LEVEL = 'info'
+
+const LEVELS = [
+  'none',
+  'fatal',
+  'error',
+  'warn',
+  'info',
+  'debug',
+  'trace',
+]
+
+const COLORS = [
+  null,
+  chalk.magenta,
+  chalk.red,
+  chalk.yellow,
+  chalk.green,
+  chalk.cyan,
+  chalk.gray,
+]
+
 function createLogger(category) {
 
-  const DEFAULT_LEVEL = 'info'
+  return LEVELS.reduce((a,c)=>{
 
-  const levels = [
-    'none',
-    'fatal',
-    'error',
-    'warn',
-    'info',
-    'debug',
-    'trace',
-  ]
+    function level2i(level) { return LEVELS.indexOf(level) }
 
-  const colors = [
-    null,
-    chalk.magenta,
-    chalk.red,
-    chalk.yellow,
-    chalk.green,
-    chalk.cyan,
-    chalk.gray,
-  ]
+    function categoryLevel() {
+      if (! category) { return DEFAULT_LEVEL }
+      return process.env[LOGGER_LEVEL_PREFIX+category] || DEFAULT_LEVEL
+    }
 
-  return levels.reduce((a,c)=>{
+    if (level2i(c) > level2i(categoryLevel())) {
 
-    function level2i(level) { return levels.indexOf(level) }
+      a[c] = function() {} // nop
 
-    function makeLogger(logLevelNo) {
-      const coloring = colors[logLevelNo]
+    } else {
+
+      const coloring = COLORS[level2i(c)]
       const label = c.toUpperCase()
-      return function() {
+      a[c] = function() {
         const args = Array.prototype.slice.call(arguments)
         const m = moment()
         const head = coloring(`[${m.format('YYYY-MM-DD HH:mm:ss')}][${category}][${label}]`)
         args.unshift(head)
         console.log.apply(null, args)
       }
+
     }
 
-    function nop() {}
-
-    function categoryLevel() {
-      if (! category) { return DEFAULT_LEVEL }
-      return process.env[`LOGGER_LEVEL_${category}`] || DEFAULT_LEVEL
-    }
-
-    if (level2i(c) <= level2i(categoryLevel())) {
-      a[c] = makeLogger(level2i(c))
-    } else {
-      a[c] = nop
-    }
     return a
   }, {})
 
