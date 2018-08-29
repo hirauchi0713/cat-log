@@ -55,11 +55,10 @@ function createLogger(category) {
     const coloring = COLORS[LEVELS.indexOf(c)]
     const label = c.toUpperCase()
 
-    a[c] = function() {
-      const args = Array.prototype.slice.call(arguments)
+    a[c] = function(...args) {
       const head = coloring(`[${moment().format(DATE_FORMAT)}][${logger.category}][${label}]`)
       args.unshift(head)
-      console.log.apply(null, args)
+      console.log(...args)
     }
     return a
   }, {})
